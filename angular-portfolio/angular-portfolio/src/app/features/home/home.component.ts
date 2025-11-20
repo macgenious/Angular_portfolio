@@ -34,43 +34,63 @@ import { CommonModule } from '@angular/common';
 
     .hero-content {
         max-width: 600px;
+        animation: fadeInLeft 1s ease-out;
+    }
+
+    @keyframes fadeInLeft {
+        from { opacity: 0; transform: translateX(-50px); }
+        to { opacity: 1; transform: translateX(0); }
     }
 
     .hero-content .comment {
         font-family: 'Courier New', Courier, monospace;
         color: #888;
         margin-bottom: 0.5rem;
+        font-size: 0.95rem;
     }
 
     .hero-content h1 {
         font-family: 'Orbitron', sans-serif;
-        font-size: 4rem;
-        line-height: 1.2;
-        margin-bottom: 1rem;
-        background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        font-size: 4.5rem;
+        font-weight: 900;
+        line-height: 1.1;
+        margin-bottom: 1.5rem;
+        background: linear-gradient(135deg, #00ffff 0%, #00ccff 25%, #ff00ff 50%, #ff00cc 75%, #00ffff 100%);
+        background-size: 200% 200%;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
+        animation: gradientShift 8s ease infinite;
+        filter: drop-shadow(0 0 20px rgba(0, 255, 255, 0.5)) drop-shadow(0 0 40px rgba(255, 0, 255, 0.3));
+    }
+
+    @keyframes gradientShift {
+        0%, 100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
     }
 
     .hero-content .tech-stack {
         font-size: 1.1rem;
         color: var(--primary-color);
         margin-bottom: 1.5rem;
-        letter-spacing: 1px;
+        letter-spacing: 1.5px;
+        text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
     }
 
     .hero-content .description {
         margin-bottom: 2rem;
-        font-size: 1rem;
+        font-size: 1.05rem;
+        line-height: 1.7;
+        color: rgba(224, 224, 224, 0.8);
     }
 
     .buttons button {
-        padding: 0.8rem 1.5rem;
+        padding: 1rem 2rem;
         border: none;
         border-radius: 8px;
         font-family: 'Orbitron', sans-serif;
         font-weight: 700;
+        font-size: 1.1rem;
         cursor: pointer;
         transition: all 0.3s ease;
         margin-right: 1rem;
@@ -79,22 +99,42 @@ import { CommonModule } from '@angular/common';
     }
 
     .btn-primary {
-        background-color: var(--primary-color);
+        background: linear-gradient(135deg, var(--primary-color), var(--link-hover-color));
         color: var(--background-color);
         box-shadow: var(--neon-glow-cyan);
+        border: 2px solid var(--primary-color);
+    }
+
+    .btn-primary::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+    }
+
+    .btn-primary:hover::before {
+        width: 300px;
+        height: 300px;
     }
 
     .btn-primary:hover {
-        background-color: #00dede;
-        box-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color), 0 0 30px var(--primary-color);
-        transform: translateY(-2px);
+        background: linear-gradient(135deg, var(--link-hover-color), var(--primary-color));
+        box-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff, 0 0 60px #00ffff;
+        transform: translateY(-3px);
     }
 
     .hero-image .code-icon {
-        font-size: 10rem;
+        font-size: 12rem;
         color: var(--primary-color);
-        text-shadow: var(--neon-glow-cyan);
-        animation: pulseCodeIcon 3s infinite ease-in-out;
+        text-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff, 0 0 60px #00ffff, 0 0 80px #00ffff;
+        animation: pulseCodeIcon 3s infinite ease-in-out, float 6s infinite ease-in-out;
+        filter: drop-shadow(0 0 30px rgba(0, 255, 255, 0.6));
     }
 
     @media (max-width: 768px) {
@@ -105,10 +145,10 @@ import { CommonModule } from '@angular/common';
             padding-bottom: 20px;
         }
         .hero-content h1 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
         }
         .hero-image .code-icon {
-            font-size: 6rem;
+            font-size: 7rem;
             margin-top: 2rem;
         }
     }

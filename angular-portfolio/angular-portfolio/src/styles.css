@@ -1,26 +1,42 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;700&display=swap');
 
 :root {
     --primary-color: #00ffff; /* Cyan */
     --secondary-color: #ff00ff; /* Magenta */
     --background-color: #0a0a23; /* Dark blue/purple */
     --text-color: #e0e0e0;
-    --grid-color: rgba(0, 255, 255, 0.1);
-    --card-background: rgba(20, 20, 50, 0.6);
-    --neon-glow-cyan: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 40px #00ffff;
-    --neon-glow-magenta: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 40px #ff00ff;
+    --grid-color: rgba(0, 255, 255, 0.15);
+    --card-background: rgba(20, 20, 50, 0.7);
+    --neon-glow-cyan: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 40px #00ffff, 0 0 80px #00ffff;
+    --neon-glow-magenta: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 40px #ff00ff, 0 0 80px #ff00ff;
     --link-hover-color: #00BFFF; /* Deep Sky Blue for hover */
     --neon-glow-blue: 0 0 5px var(--link-hover-color), 0 0 10px var(--link-hover-color), 0 0 20px var(--link-hover-color), 0 0 40px var(--link-hover-color);
+    --neon-border-cyan: 0 0 10px rgba(0, 255, 255, 0.5), inset 0 0 10px rgba(0, 255, 255, 0.2);
+    --neon-border-magenta: 0 0 10px rgba(255, 0, 255, 0.5), inset 0 0 10px rgba(255, 0, 255, 0.2);
 }
 
 ::-webkit-scrollbar {
-    display: none;
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--background-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+    border-radius: 5px;
+    box-shadow: var(--neon-glow-cyan);
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -43,7 +59,45 @@ body::before {
     background-image: 
         linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
         linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
-    background-size: 40px 40px;
+    background-size: 50px 50px;
     z-index: -1;
     pointer-events: none;
+    animation: gridPulse 4s ease-in-out infinite;
 }
+
+@keyframes gridPulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+/* Global Animations */
+@keyframes pulse {
+    0%, 100% { 
+        box-shadow: var(--neon-glow-cyan);
+    }
+    50% { 
+        box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 40px #00ffff, 0 0 80px #00ffff, 0 0 120px #00ffff;
+    }
+}
+
+@keyframes pulseCodeIcon {
+    0%, 100% { 
+        text-shadow: var(--neon-glow-cyan);
+        transform: scale(1);
+    }
+    50% { 
+        text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 40px #00ffff, 0 0 80px #00ffff;
+        transform: scale(1.05);
+    }
+}
+
+@keyframes colorShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+

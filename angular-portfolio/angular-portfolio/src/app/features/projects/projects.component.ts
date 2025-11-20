@@ -46,7 +46,7 @@ import { ProjectCardComponent } from './project-card/project-card.component';
   `,
     styles: [`
     section {
-        padding: 60px 5%;
+        padding: 80px 5%;
         min-height: 80vh;
         display: flex;
         flex-direction: column;
@@ -58,31 +58,33 @@ import { ProjectCardComponent } from './project-card/project-card.component';
 
     section h2 {
         font-family: 'Orbitron', sans-serif;
-        font-size: 2.5rem;
+        font-size: 3rem;
+        font-weight: 900;
         margin-bottom: 1rem;
-        letter-spacing: 2px;
+        letter-spacing: 3px;
         color: var(--primary-color);
-        text-shadow: var(--neon-glow-cyan);
+        text-shadow: 0 0 20px rgba(0, 255, 255, 0.8), 0 0 40px rgba(0, 255, 255, 0.5);
     }
 
     .neon-text-purple {
         color: var(--secondary-color);
-        text-shadow: var(--neon-glow-magenta);
+        text-shadow: 0 0 20px rgba(255, 0, 255, 0.8), 0 0 40px rgba(255, 0, 255, 0.5);
         margin-left: 0.5ch;
     }
 
     .section-subtitle {
-        font-size: 1.1rem;
-        color: rgba(224, 224, 224, 0.7);
+        font-size: 1.15rem;
+        color: rgba(224, 224, 224, 0.75);
         margin-bottom: 3rem;
-        max-width: 600px;
+        max-width: 650px;
+        line-height: 1.6;
     }
 
     .filter-buttons {
         display: flex;
         justify-content: center;
         gap: 1rem;
-        margin-bottom: 2rem;
+        margin-bottom: 3rem;
         flex-wrap: wrap;
         z-index: 10;
         position: relative;
@@ -90,21 +92,35 @@ import { ProjectCardComponent } from './project-card/project-card.component';
 
     .filter-btn {
         background: transparent;
-        border: 1px solid var(--primary-color);
+        border: 2px solid var(--primary-color);
         color: var(--text-color);
-        padding: 0.5rem 1.5rem;
-        border-radius: 20px;
+        padding: 0.7rem 1.8rem;
+        border-radius: 25px;
         font-family: 'Orbitron', sans-serif;
+        font-size: 1rem;
+        font-weight: 600;
         cursor: pointer;
         transition: all 0.3s ease;
         text-transform: uppercase;
-        letter-spacing: 1px;
+        letter-spacing: 1.5px;
+        box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
     }
 
-    .filter-btn:hover, .filter-btn.active {
-        background: var(--primary-color);
+    .filter-btn:hover {
+        background: linear-gradient(135deg, rgba(0, 255, 255, 0.2), rgba(0, 191, 255, 0.2));
+        color: var(--primary-color);
+        border-color: var(--link-hover-color);
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+        transform: translateY(-2px);
+    }
+
+    .filter-btn.active {
+        background: linear-gradient(135deg, var(--primary-color), var(--link-hover-color));
         color: var(--background-color);
-        box-shadow: var(--neon-glow-cyan);
+        border-color: var(--primary-color);
+        box-shadow: 0 0 25px rgba(0, 255, 255, 0.6), 
+                    0 0 40px rgba(0, 255, 255, 0.3);
+        transform: translateY(-2px);
     }
 
     .project-carousel-container {
@@ -131,7 +147,7 @@ import { ProjectCardComponent } from './project-card/project-card.component';
 
     @media (max-width: 768px) {
         section h2 {
-            font-size: 2rem;
+            font-size: 2.2rem;
         }
         .project-carousel-container {
             height: 400px;

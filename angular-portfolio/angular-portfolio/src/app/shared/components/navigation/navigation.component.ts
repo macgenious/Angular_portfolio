@@ -24,14 +24,15 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
         top: 0;
         left: 0;
         width: 100%;
-        padding: 1rem 5%;
-        background: rgba(10, 10, 35, 0.8);
-        backdrop-filter: blur(10px);
+        padding: 1.2rem 5%;
+        background: rgba(10, 10, 35, 0.9);
+        backdrop-filter: blur(15px);
         display: flex;
         justify-content: space-between;
         align-items: center;
         z-index: 1000;
-        border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+        border-bottom: 2px solid rgba(0, 255, 255, 0.3);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     }
 
     nav {
@@ -43,18 +44,19 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 
     .logo {
         font-family: 'Orbitron', sans-serif;
-        font-size: 1.8rem;
-        font-weight: 700;
+        font-size: 2rem;
+        font-weight: 900;
+        letter-spacing: 2px;
     }
 
     .logo-cyber {
         color: var(--primary-color);
-        text-shadow: var(--neon-glow-cyan);
+        text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff;
     }
 
     .logo-dev {
         color: var(--secondary-color);
-        text-shadow: var(--neon-glow-magenta);
+        text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff;
     }
 
     nav ul {
@@ -63,21 +65,42 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
     }
 
     nav ul li {
-        margin-left: 2rem;
+        margin-left: 2.5rem;
+        position: relative;
     }
 
     nav ul li a {
         text-decoration: none;
         color: var(--text-color);
         font-weight: 500;
+        font-size: 1.05rem;
         transition: color 0.3s ease, text-shadow 0.3s ease;
         cursor: pointer;
+        position: relative;
+        padding-bottom: 5px;
+    }
+
+    nav ul li a::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, var(--primary-color), var(--link-hover-color));
+        box-shadow: 0 0 10px var(--primary-color);
+        transition: width 0.3s ease;
+    }
+
+    nav ul li a:hover::after,
+    nav ul li a.active::after {
+        width: 100%;
     }
 
     nav ul li a:hover,
     nav ul li a.active {
-        color: var(--link-hover-color);
-        text-shadow: var(--neon-glow-blue);
+        color: var(--primary-color);
+        text-shadow: 0 0 10px rgba(0, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.5);
     }
     
     @media (max-width: 768px) {
@@ -88,7 +111,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
             display: none; /* Mobile menu to be implemented if requested, keeping simple for now */
         }
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
         }
     }
   `]

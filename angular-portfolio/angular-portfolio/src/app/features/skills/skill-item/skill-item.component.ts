@@ -19,14 +19,16 @@ import { Skill } from '../../../core/services/skills.service';
     .skill-item {
         display: flex;
         align-items: center;
-        padding: 0.8rem 1rem;
-        background-color: rgba(20, 20, 40, 0.4);
-        border-radius: 6px;
-        border-left: 3px solid var(--primary-color);
+        padding: 1rem 1.2rem;
+        background: linear-gradient(135deg, rgba(20, 20, 40, 0.6), rgba(30, 20, 50, 0.4));
+        border-radius: 8px;
+        border-left: 4px solid var(--primary-color);
+        border-right: 1px solid rgba(0, 255, 255, 0.2);
         transition: all 0.3s ease;
         margin-bottom: 0.8rem;
         opacity: 0;
-        animation: slideIn 0.5s forwards;
+        animation: slideIn 0.6s forwards;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     }
 
     @keyframes slideIn {
@@ -35,44 +37,70 @@ import { Skill } from '../../../core/services/skills.service';
     }
 
     .skill-item:hover {
-        background-color: rgba(30, 30, 60, 0.6);
-        transform: translateX(5px);
+        background: linear-gradient(135deg, rgba(30, 30, 60, 0.7), rgba(40, 30, 60, 0.6));
+        transform: translateX(8px);
+        border-left-color: var(--secondary-color);
+        box-shadow: 0 4px 20px rgba(0, 255, 255, 0.3), -4px 0 15px rgba(255, 0, 255, 0.2);
     }
 
     .skill-name {
         flex-basis: 30%;
         min-width: 120px;
-        font-weight: 500;
+        font-weight: 600;
         color: var(--text-color);
         margin-right: 1rem;
+        font-size: 1.05rem;
     }
 
     .proficiency-bar-container {
         flex-grow: 1;
-        height: 20px;
-        background-color: rgba(0, 0, 0, 0.5);
-        border-radius: 8px;
+        height: 22px;
+        background-color: rgba(0, 0, 0, 0.6);
+        border-radius: 10px;
         overflow: hidden;
         margin-right: 1rem;
         position: relative;
+        border: 1px solid rgba(0, 255, 255, 0.2);
     }
 
     .proficiency-bar {
         height: 100%;
-        background: linear-gradient(90deg, var(--secondary-color), var(--primary-color), var(--secondary-color), var(--primary-color));
-        background-size: 300% 300%;
-        border-radius: 8px;
-        box-shadow: 0 0 8px var(--primary-color);
-        animation: colorShift 8s infinite ease-in-out;
+        background: linear-gradient(90deg, 
+            #ff00ff 0%, 
+            #ff00cc 15%,
+            #cc00ff 30%,
+            #00ffff 50%,
+            #00ccff 70%,
+            #ff00ff 85%,
+            #ff00ff 100%);
+        background-size: 400% 400%;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 255, 255, 0.6), 
+                    0 0 30px rgba(255, 0, 255, 0.4),
+                    inset 0 0 10px rgba(255, 255, 255, 0.2);
+        animation: colorShift 6s infinite ease-in-out;
         transition: width 1.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+        position: relative;
+    }
+
+    .proficiency-bar::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 50%;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.3), transparent);
+        border-radius: 10px 10px 0 0;
     }
 
     .proficiency-text {
-        min-width: 40px;
-        font-weight: 600;
+        min-width: 45px;
+        font-weight: 700;
         color: var(--primary-color);
         text-align: right;
-        font-size: 0.9rem;
+        font-size: 1rem;
+        text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
     }
 
     @media (max-width: 768px) {

@@ -37,7 +37,7 @@ import { SkillItemComponent } from './skill-item/skill-item.component';
   `,
     styles: [`
     section {
-        padding: 60px 5%;
+        padding: 80px 5%;
         min-height: 80vh;
         display: flex;
         flex-direction: column;
@@ -48,30 +48,32 @@ import { SkillItemComponent } from './skill-item/skill-item.component';
 
     section h2 {
         font-family: 'Orbitron', sans-serif;
-        font-size: 2.5rem;
+        font-size: 3rem;
+        font-weight: 900;
         margin-bottom: 1rem;
-        letter-spacing: 2px;
+        letter-spacing: 3px;
         color: var(--primary-color);
-        text-shadow: var(--neon-glow-cyan);
+        text-shadow: 0 0 20px rgba(0, 255, 255, 0.8), 0 0 40px rgba(0, 255, 255, 0.5);
     }
 
     .neon-text-purple {
         color: var(--secondary-color);
-        text-shadow: var(--neon-glow-magenta);
+        text-shadow: 0 0 20px rgba(255, 0, 255, 0.8), 0 0 40px rgba(255, 0, 255, 0.5);
         margin-left: 0.5ch;
     }
 
     .section-subtitle {
-        font-size: 1.1rem;
-        color: rgba(224, 224, 224, 0.7);
+        font-size: 1.15rem;
+        color: rgba(224, 224, 224, 0.75);
         margin-bottom: 3rem;
-        max-width: 600px;
+        max-width: 650px;
+        line-height: 1.6;
     }
 
     .skills-container {
         display: flex;
         flex-direction: column;
-        gap: 2rem;
+        gap: 2.5rem;
         width: 100%;
         max-width: 1000px;
         margin-top: 2rem;
@@ -79,11 +81,20 @@ import { SkillItemComponent } from './skill-item/skill-item.component';
 
     .proficiency-levels, .skill-categories {
         flex: 1;
-        background: var(--card-background);
-        padding: 1.5rem;
-        border-radius: 8px;
-        border: 1px solid var(--primary-color);
-        box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+        background: linear-gradient(135deg, rgba(20, 20, 50, 0.8), rgba(30, 20, 60, 0.6));
+        padding: 2rem;
+        border-radius: 12px;
+        border: 2px solid var(--primary-color);
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.3), 
+                    inset 0 0 20px rgba(0, 255, 255, 0.05);
+        transition: all 0.3s ease;
+    }
+
+    .proficiency-levels:hover, .skill-categories:hover {
+        border-color: var(--secondary-color);
+        box-shadow: 0 0 30px rgba(0, 255, 255, 0.4), 
+                    0 0 50px rgba(255, 0, 255, 0.2),
+                    inset 0 0 30px rgba(0, 255, 255, 0.08);
     }
     
     .skill-categories {
@@ -92,41 +103,52 @@ import { SkillItemComponent } from './skill-item/skill-item.component';
 
     h3 {
         font-family: 'Orbitron', sans-serif;
-        font-size: 1.5rem;
+        font-size: 1.8rem;
+        font-weight: 700;
         color: var(--primary-color);
-        text-shadow: var(--neon-glow-cyan);
-        margin-bottom: 1.5rem;
+        text-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+        margin-bottom: 2rem;
         text-align: center;
     }
 
     .category-tabs {
         display: flex;
         flex-wrap: wrap;
-        gap: 0.5rem;
+        gap: 0.8rem;
         margin-bottom: 1.5rem;
         justify-content: center;
     }
 
     .category-btn {
-        background-color: transparent;
+        background: transparent;
         color: var(--text-color);
-        border: 1px solid var(--primary-color);
-        padding: 0.5rem 1rem;
-        border-radius: 20px;
+        border: 2px solid var(--primary-color);
+        padding: 0.7rem 1.5rem;
+        border-radius: 25px;
         cursor: pointer;
         transition: all 0.3s ease;
         font-family: 'Orbitron', sans-serif;
+        font-size: 1rem;
+        font-weight: 600;
+        box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
     }
 
-    .category-btn:hover, .category-btn.active {
-        background-color: var(--primary-color);
-        color: var(--background-color);
-        box-shadow: var(--neon-glow-cyan);
+    .category-btn:hover {
+        background: linear-gradient(135deg, rgba(0, 255, 255, 0.2), rgba(0, 191, 255, 0.2));
+        color: var(--primary-color);
+        border-color: var(--link-hover-color);
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
         transform: translateY(-2px);
     }
 
     .category-btn.active {
-        font-weight: bold;
+        background: linear-gradient(135deg, var(--primary-color), var(--link-hover-color));
+        color: var(--background-color);
+        border-color: var(--primary-color);
+        box-shadow: 0 0 25px rgba(0, 255, 255, 0.6), 
+                    0 0 40px rgba(0, 255, 255, 0.3);
+        transform: translateY(-2px);
+        font-weight: 700;
     }
 
     .skill-items-container {
@@ -140,7 +162,7 @@ import { SkillItemComponent } from './skill-item/skill-item.component';
             flex-direction: column;
         }
         section h2 {
-            font-size: 2rem;
+            font-size: 2.2rem;
         }
     }
   `]
