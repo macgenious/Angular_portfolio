@@ -3,15 +3,15 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./components/home/home.module').then(m => m.HomeModule)
+    loadComponent: () => import('./components/home/home.component').then(c => c.HomeComponent)
   },
   {
     path: 'skills',
-    loadChildren: () => import('./components/skills/skills.module').then(m => m.SkillsModule)
+    loadComponent: () => import('./components/skills/skills.component').then(c => c.SkillsComponent)
   },
   {
     path: 'projects',
-    loadChildren: () => import('./components/projects/projects.module').then(m => m.ProjectsModule)
+    loadComponent: () => import('./components/projects/projects.component').then(c => c.ProjectsComponent)
   },
   { path: '**', redirectTo: '' }
 ];

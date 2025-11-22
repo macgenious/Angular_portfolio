@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -9,7 +9,8 @@ import { TypingGameService, Difficulty } from '../../services/typing-game.servic
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './typing-game.component.html',
-  styleUrls: ['./typing-game.component.scss']
+  styleUrls: ['./typing-game.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TypingGameComponent implements OnInit, OnDestroy {
   @Input() embedded = false;

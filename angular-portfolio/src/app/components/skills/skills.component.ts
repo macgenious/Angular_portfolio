@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SkillsService } from '../../services/skills.service';
 import { Skill } from '../../models/skill.interface';
@@ -9,7 +9,8 @@ import { Observable, Subscription } from 'rxjs';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './skills.component.html',
-  styleUrls: ['./skills.component.scss']
+  styleUrls: ['./skills.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SkillsComponent implements OnInit, OnDestroy {
   skills$: Observable<Skill[]>;
